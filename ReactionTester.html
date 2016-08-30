@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+    body{
+        font-family: Verdana, Geneva, sans-serif;
+    }
+    h1,h3,#time{
+        text-align:center;
+    }
+    #squareBox{
+        height: 200px;
+        width: 200px;
+        background-color: red;
+        display:none;
+        position: relative;
+    }
+</style>
+</head>
+<body>
+    <h1>Click Fast! View your Reaction Time</h1>
+    <h3>Click on the Squares and Circles as they appear! Hurry Up!</h3>
+    <p id="time">Your time is:<span id="t">00</span>Secs</p>
+<div id="squareBox"></div>
+<script type="text/javascript">
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+            var reactionTime=0; var clickedTime; var createdTime;
+    function makeBox(){
+         
+        var time=Math.random();
+        time=time*5000;
+        setTimeout(function(){
+            
+            if(Math.random()>0.5){
+                document.getElementById("squareBox").style.borderRadius="100px";
+            }
+            else{
+                document.getElementById("squareBox").style.borderRadius="0";
+            }
+            var top = Math.random();
+            top=top*300;
+            var left=Math.random();
+            left=left*500;
+            document.getElementById("squareBox").style.top=top+"px";
+            document.getElementById("squareBox").style.left=left+"px";
+            document.getElementById("squareBox").style.backgroundColor=getRandomColor();
+            document.getElementById("squareBox").style.display="block";
+            createdTime=Date.now();
+        }, time);
+        
+    }
+    
+        document.getElementById("squareBox").onclick=function(){
+            clickedTime=Date.now();
+            reactionTime=(clickedTime-createdTime)/1000;
+            document.getElementById("t").innerHTML=reactionTime;
+            this.style.display="none";
+            makeBox();
+            
+        }
+        
+        makeBox();
+        
+    
+    //document.getElementById("squareBox")=disappe();
+</script>
+</body>
+</html>
