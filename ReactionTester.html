@@ -19,7 +19,7 @@
 </head>
 <body>
     <h1>Click Fast! View your Reaction Time</h1>
-    <h3>Click on the Squares and Circles as they appear! Hurry Up!</h3>
+    <h3>Click on the Squares and Circles as they appear!</h3>
     <p id="time">Your time is:<span id="t">00</span>Secs</p>
 <div id="squareBox"></div>
 <script type="text/javascript">
@@ -35,7 +35,7 @@
     function makeBox(){
          
         var time=Math.random();
-        time=time*5000;
+        time=time*2000;
         setTimeout(function(){
             
             if(Math.random()>0.5){
